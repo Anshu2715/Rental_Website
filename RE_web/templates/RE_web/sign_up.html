@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      padding: 30px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group input:focus {
+      border-color: #0066cc;
+      outline: none;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: #0066cc;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .login-link a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Owner Login</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="owner_name">Full Name</label>
+        <input type="text" id="owner_name" name="owner_name" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="aadhar_number">Aadhar Number</label>
+        <input type="text" id="aadhar_number" name="aadhar_number" placeholder="Enter your Aadhar Number" required>
+      </div>
+      <div class="form-group">
+        <label for="owner_photo">Upload Aadhar Photo</label>
+        <input type="file" id="owner_photo" name="owner_photo" required>
+      </div>
+      <div class="form-group">
+        <label for="owner_phone">Phone Number</label>
+        <input type="tel" id="owner_phone" name="owner_phone" placeholder="Enter your phone number" required>
+      </div>
+      <div class="form-group">
+        <label for="owner_govt_id">Upload Govt ID</label>
+        <input type="file" id="owner_govt_id" name="owner_govt_id" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="login-link">
+        Don't have an account? <a href="signup.html">Sign Up Here</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

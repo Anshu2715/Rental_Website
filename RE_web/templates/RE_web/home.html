@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Developed by MD. Rabiul Islam">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEasy</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="{% static 'js/script.js' %}"></script>
+
+    <!-- Bootstrap & Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">RENT EASY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'about' %}">About Us</a></li>
+                            <li><a class="dropdown-item" href="#">Services</a></li>
+                            <li><a class="dropdown-item" href="{% url 'sign_up' %}">Owner</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'about' %}">About Us</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">All About RentEasy</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">What We Provide</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'sign_up' %}">Owner</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Owner Sign In</a></li>
+                            <li><a class="dropdown-item" href="#">List My Room</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'contact' %}">Contact</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'contact' %}">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="btn btn-primary ms-3">Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" style="background: url('{% static 'images/retro-living-room-interior-design.jpg' %}') center/cover no-repeat; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+         <h1 >RentEasy</h1>
+        <p>Your go-to platform for rental listings.</p>
+        <button class="btn btn-primary">Explore Our Services</button>
+    </header>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup-container" id="popupBox">
+        <div class="popup-header">
+            <span>Special Offer!</span>
+            <span class="close-btn" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-content">
+            <p>Don't roam around! Sign up now and get the house of your dreams at affordable prices.</p>
+        </div>
+        <button class="signup-btn" href="{% url 'sign_up' %}">Sign Up</button>
+    </div>
+     <!-- Full-width Search Bar with Filters -->
+     <section class="search-bar">
+        <h2>Find Your Perfect Room</h2>
+        <p>Browse rooms by location, price, and type. Use the filters to narrow your search.</p>
+    
+        <div class="search-container">
+          <!-- Location Input -->
+          <input type="text" placeholder="Enter Location" id="location" />
+    
+          <!-- Price Range Slider -->
+          <div class="price-range">
+            <input type="range" id="priceRange" min="1000" max="10000" value="5000" />
+            <div>
+              <span>₹1000</span> - <span>₹10000</span>
+            </div>
+          </div>
+    
+          <!-- BHK Select Dropdown -->
+          <select id="bhk">
+            <option value="">Select BHK</option>
+            <option value="1">1 BHK</option>
+            <option value="2">2 BHK</option>
+            <option value="3">3 BHK</option>
+            <option value="4">4 BHK</option>
+          </select>
+    
+          <!-- Submit Button -->
+          <button onclick="searchRooms()">Search</button>
+        </div>
+          
+    
+          <!-- Map Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Map</div>
+            <div class="map-filter">
+              <input type="checkbox" id="map" /> <label for="map">Enable Map</label>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cta-section">
+        <div class="cta-container">
+            <!-- Search CTA -->
+            <div class="cta-item">
+                <h2>Find Your Perfect Room</h2>
+                <p>Browse rooms and apartments based on your preferences.</p>
+                <button onclick="window.location.href='#search-section'">Start Searching</button>
+            </div>
+    
+            <!-- Sign Up CTA -->
+            <div class="cta-item">
+                <h2>Ready to Get Started?</h2>
+                <p>Create an account to start saving rooms and booking instantly.</p>
+                <button onclick="window.location.href='/signup'">Sign Up Now</button>
+                <p>Already have an account? <a href="/login">Log In</a></p>
+            </div>
+    
+            <!-- Property Owner CTA -->
+            <div class="cta-item">
+                <h2>Own a Property?</h2>
+                <p>List your rooms with RentEasy and reach thousands of renters.</p>
+                <button onclick="window.location.href='/owner_signup'">List Your Property</button>
+            </div>
+        </div>
+    </section>
+ 
+     
+<div class="slideshow-container">
+  <h1>RentEasy</h1>
+      <p>Your one-stop solution for renting rooms and properties</p>
+    <!-- Slide 1 -->
+    <div class="slide">
+        <div class="card">
+            <div class="card-image" >
+            <img src="https://images.pexels.com/photos/210604/pexels-photo-210604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></div>
+            <div class="card-content">
+                <h3>Single Room for Rent in Indra Puri Colony, Indore</h3>
+                <p>Affordable rooms for students and professionals.</p>
+                <p class="price">₹3000 - ₹4000/month</p>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Slide 2 -->
+    <div class="slide">
+        <div class="card">
+          <div class="card-image" >
+            <img src="https://images.pexels.com/photos/90317/pexels-photo-90317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></div>
+            <div class="card-content">
+                <h3>Rooms for Rent in Indore</h3>
+                <p>Find budget-friendly rental rooms.</p>
+                <p class="price">₹3000 - ₹4000/month</p>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Slide 3 -->
+    <div class="slide">
+        <div class="card">
+          <div class="card-image" >
+            <img src="https://images.pexels.com/photos/2082087/pexels-photo-2082087.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></div>
+            <div class="card-content">
+                <h3>Single Room in Scheme No 114</h3>
+                <p>Safe and secure living in Indore.</p>
+                <p class="price">₹4000 - ₹5000/month</p>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Slide 4 -->
+    <div class="slide">
+        <div class="card">
+          <div class="card-image" >
+            <img src="https://images.pexels.com/photos/2082093/pexels-photo-2082093.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></div>
+            <div class="card-content">
+                <h3>PG in Indore Under ₹3000</h3>
+                <p>Comfortable and affordable PG options.</p>
+                <p class="price">₹2000 - ₹3000/month</p>
+            </div>
+          </div>
+    </div>
+  
+    <!-- Slide 5 -->
+    <div class="slide">
+        <div class="card">
+          <div class="card-image" >
+            <img src="https://images.pexels.com/photos/2082093/pexels-photo-2082093.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></div>
+            <div class="card-content">
+                <h3>PG in Indore Under ₹3000</h3>
+                <p>Comfortable and affordable PG options.</p>
+                <p class="price">₹2000 - ₹3000/month</p>
+            </div>
+          </div>
+    </div>
+  
+    <!-- Navigation buttons -->
+    <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+    <button class="next" onclick="plusSlides(1)">&#10095;</button>
+  </div>
+      
+    
+      <!-- Latest Blog Posts Section -->
+      <section class="latest-posts">
+        <h3>Latest Blog Posts</h3>
+        <div class="post-container">
+          <!-- Blog Post 1 -->
+          <div class="post-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoM_pZdm1SNK1e3nhky3Y8t-uDp5WPPgXN8A&s" alt="Blog Post Image">
+            <h4>How to Choose the Perfect Room</h4>
+            <p>Looking for a room? Here’s how to make the right choice based on your preferences.</p>
+            <a href="/blog/how-to-choose-room">Read More</a>
+          </div>
+    
+          <!-- Blog Post 2 -->
+          <div class="post-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaWVw15o2FPfT9e470JmVckmT2ccJ-tFe0OA&s" alt="Blog Post Image">
+            <h4>Benefits of Renting with RentEasy</h4>
+            <p>Discover the benefits of using RentEasy for finding your next room to rent.</p>
+            <a href="/blog/benefits-of-renting">Read More</a>
+          </div>
+    
+          <!-- Blog Post 3 -->
+          <div class="post-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVskmcU4vghi6EbzGsZJdFFrdxo4ppu_nQkg&s" alt="Blog Post Image">
+            <h4>Room Rental Tips by Experts</h4>
+            <p>Essential tips to keep in mind when renting a room for the first time in your area.</p>
+            <a href="/blog/room-rental-tips">Read More</a>
+          </div>
+    
+          <!-- Blog Post 4 -->
+          <div class="post-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvfE2qxxnSRzWfkNhQeLVYzBic6fDj4-x84w&s" alt="Blog Post Image">
+            <h4>How to Save Money on Rent</h4>
+            <p>Learn effective strategies to find affordable rooms and reduce your rent costs.</p>
+            <a href="/blog/save-money-on-rent">Read More</a>
+          </div>
+        </div>
+    </section>
+
+
+    <footer>
+      <div class="footer-container">
+          <div class="footer-section logo">
+              {% comment %} <div class="image_footer" ><img src="static/images/RentEasy_logo.png" alt="RentEasy Logo"></div> {% endcomment %}
+              <p>
+                  Find your perfect room, book effortlessly, and live comfortably with RentEasy.
+                  Your one-stop platform for room rentals.
+              </p>
+              <p class="contact">
+                  <span class="fa fa-phone text-white"></span> +123 456 7890
+              </p>
+          </div>
+  
+          <div class="footer-section links">
+              <h3>Helpful Links</h3>
+              <ul>
+                  <li><a href="#">How RentEasy Works</a></li>
+                  <li><a href="#">Renting a Room</a></li>
+                  <li><a href="#">Become a Property Owner</a></li>
+                  <li><a href="#">Find a Room</a></li>
+                  <li><a href="#">Blog</a></li>
+              </ul>
+          </div>
+  
+          <div class="footer-section locations">
+              <h3>Popular Locations</h3>
+              <ul>
+                  <li class="#"><a href="#">Indore</a></li>
+                  <li><a href="#">Bhopal</a></li>
+                  <li><a href="#">Mumbai</a></li>
+                  <li><a href="#">Delhi</a></li>
+                  <li><a href="#">Pune</a></li>
+              </ul>
+          </div>
+  
+          <div class="footer-section newsletter">
+              <h3>Subscribe to Our Newsletter</h3>
+              <div class="subscribe">
+                  <input type="email" placeholder="Your Email here">
+                  <button>→</button>
+              </div>
+              <div class="follow-us">
+                <h6 class="text-white">Follow Us</h6>
+                
+                  <a href="https://facebook.com">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a href="https://twitter.com">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                  <a href="https://linkedin.com">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                
+              </div>
+          </div>
+      </div>
+  
+      <div class="footer-bottom">
+          <p>© <span class="brand">RentEasy</span>. All Rights Reserved</p>
+          <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+  </footer>
+  
+  
+ <
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

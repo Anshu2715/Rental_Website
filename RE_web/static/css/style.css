@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: rgba(4, 16, 46, 0.992);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-family: 'Gravitas One', sans-serif;
+    text-transform: uppercase;
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    margin-right: 20px;
+    color: white !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: lightgray !important;
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+    background: rgba(70, 69, 69, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.dropdown-item {
+    padding: 8px 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background: rgb(72, 72, 72) !important;
+    color: white !important;
+}
+
+/* Enable hover dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    font-family: 'PT Serif', serif;
+    /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    /* Ensures text is readable */
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Slightly darkens the background for readability */
+    z-index: 1;
+}
+
+.hero h1,
+.hero p,
+.hero button {
+    
+    position: relative;
+    z-index: 2;
+}
+h1,h2{
+    font-family: 'PT Serif', serif;
+}
+
+/* Buttons */
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: white;
+    border: none;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: lightgray;
+    color: black;
+}
+
+.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Darker blur effect */
+    backdrop-filter: blur(8px);
+    display: none;
+    z-index: 999;
+}
+
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    color: #379aa3ce;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #0044d6;
+}
+
+
+.popup-content {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.signup-btn {
+    background: #379aa3ce;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background: #0044d6;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Full-width Search Bar */
+.search-bar {
+    width: 100%;
+    height: 500px;
+    color: #2D2D2D;
+    /* Dark gray for readability */
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #222;
+    /* Even darker for better contrast */
+}
+
+.search-bar p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #333;
+    /* Dark gray */
+}
+
+/* Input fields and buttons */
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-container input,
+.search-container select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    /* Darker border */
+    background-color: #F5F5F5;
+    /* Light gray for contrast */
+    color: #222;
+    /* Dark text */
+    margin: 5px;
+    width: 250px;
+}
+
+.search-container input:focus,
+.search-container select:focus {
+    border-color: #222;
+    /* Darker border on focus */
+    outline: none;
+}
+
+/* Search Button */
+.search-container button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #444;
+    /* Dark gray button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #222;
+    /* Even darker gray for hover */
+}
+
+/* Price Slider */
+.price-range {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.price-range input {
+    width: 100%;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.filters select,
+.filters input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #F5F5F5;
+    color: #222;
+    margin: 5px;
+    width: 250px;
+}
+
+/* Filter Title */
+.filter-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Map Section */
+.map-filter {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+}
+
+.cta-section {
+    background-color: #0044d689;
+    /* Deep warm red */
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cta-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.cta-item {
+    background-color: #F8E6E6;
+    /* Light but not too white */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow for depth */
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+
+}
+.cta-item:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-item h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1c505a;
+    /* Deep reddish-brown for contrast */
+}
+
+.cta-item p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #2f3a8b;
+    /* Slightly darker text */
+}
+
+.cta-item button {
+    padding: 12px 25px;
+    background-color: rgb(22, 19, 64) !important;
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-item button:hover {
+    background-color: #3432b9 !important;
+}
+
+
+/* Links inside CTA */
+.cta-item a {
+    color: #3d32b9;
+    /* Dark red for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta-item a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .cta-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-item {
+        width: 100%;
+    }
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.card {
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+}
+
+.card-image {
+    padding: 10px;
+    width: 500px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    padding: 10px;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #777;
+}
+
+.card-content .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+/* Navigation Buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: relative;
+    top: 30%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    background-color: rgba(53, 50, 207, 0.5);
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transform: translateY(-50%);
+    bottom: 250px;
+}
+
+.prev {
+    left: -50px;
+}
+
+.next {
+    right: -500px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(16, 2, 55, 0.8);
+}
+
+
+/* Import Google Font */
+
+
+.latest-posts {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+    width: 100%; /* Ensure full width */
+}
+
+/* Apply "Source Serif 4" to the heading */
+.latest-posts h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Source Serif 4', serif;
+}
+
+/* Ensure posts are side by side */
+.post-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures proper spacing */
+    align-items: flex-start; /* Aligns items properly */
+    gap: 20px;
+    max-width: 1200px; /* Prevents excessive stretching */
+    margin: 0 auto; /* Centers the section */
+}
+
+/* Blog Post Card Styling */
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px); /* Each post takes 25% width minus the gap */
+    min-width: 250px; /* Prevents items from becoming too small */
+    max-width: 300px; /* Avoids stretching on wider screens */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image Styling */
+.post-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Post Title */
+.post-card h4 {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+/* Post Description */
+.post-card p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Read More Button */
+.post-card a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.post-card a:hover {
+    background-color: #005bb5;
+}
+
+/* Hover Effect - Enlarge on Hover */
+.post-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Layout - Adjusting for smaller screens */
+@media (max-width: 1024px) {
+    .post-card {
+        width: calc(33.33% - 20px); /* 3 per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .post-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .post-card {
+        width: calc(50% - 20px); /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .post-card {
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+footer {
+    background-color: #333030;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    transform: translateX(5px);
+}
+
+.subscribe {
+    display: flex;
+    margin-top: 10px;
+}
+
+.subscribe input {
+    padding: 10px;
+    border: none;
+    flex: 1;
+}
+
+.subscribe button {
+    background-color: #1a73e8;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.subscribe button:hover {
+    background-color: #145abb;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.follow-us{
+     padding: 20px;
+     margin-right: 15px;
+     text-decoration: none;
+}
+.image-footer{
+    height: 20px;
+    width: 20px;
+}
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom a {
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    transform: translateY(-3px);
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - RentEasy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      padding: 30px;
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #0066cc;
+      outline: none;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: #0066cc;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .login-link a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Enter your message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+      <div class="login-link">
+        <a href="index.html">Back to Home</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
